@@ -1,30 +1,3 @@
-# from cProfile import label
-# from PyQt5 import QtWidgets, QtGui, QtCore
-# from PyQt5.QtWidgets import QApplication, QMainWindow, QComboBox, QWidget, QHBoxLayout
-
-# import sys
-
-# #Set window
-# class MainWindow() 
-#     def window():
-#         app = QApplication(sys.argv)
-#         win = QMainWindow()
-#         win.setGeometry(800, 300 ,600, 600)
-#         win.setWindowTitle("Test 1")
-        
-#         label = QtWidgets.QLabel(win)
-#         label.setText("Select project number.")
-#         label.move(20, 30)
-#         label.adjustSize()
-
-#         #Drop down menu of Projects
-        
-
-#         win.show()
-#         sys.exit(app.exec())
-
-# window()
-
 import PyQt5.QtWidgets as qtw
 import PyQt5.QtGui as qtg
 import main
