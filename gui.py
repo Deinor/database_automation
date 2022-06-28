@@ -1,6 +1,6 @@
 import PyQt5.QtWidgets as qtw
 import PyQt5.QtGui as qtg
-import main
+from main import list_snr
 
 class MainWindow(qtw.QWidget):
     def __init__(self):
@@ -26,9 +26,7 @@ class MainWindow(qtw.QWidget):
         my_combo = qtw.QComboBox(self)
 
         #Add Items to combo Box
-        my_combo.addItem("One")
-        my_combo.addItem("Two")
-        my_combo.addItem("Three")
+        my_combo.addItems(list_snr)
 
         #Put combo on screen
         self.layout().addWidget(my_combo)
