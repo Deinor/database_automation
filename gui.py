@@ -1,6 +1,6 @@
 import PyQt5.QtWidgets as qtw
 import PyQt5.QtGui as qtg
-from main import list_snr
+from excel_script import get_excel
 
 class MainWindow(qtw.QWidget):
     def __init__(self):
@@ -21,19 +21,23 @@ class MainWindow(qtw.QWidget):
 
         self.layout().addWidget(my_label)
 
+        #Create a button
+        my_button1 = qtw.QPushButton("Load list snr", clicked = lambda: press_it())
+        self.layout().addWidget(my_button1)
 
         #Create Combo box
+        get_excel()
         my_combo = qtw.QComboBox(self)
 
         #Add Items to combo Box
-        my_combo.addItems(list_snr)
+        my_combo.addItems("1", "2")
 
         #Put combo on screen
         self.layout().addWidget(my_combo)
 
         #Create a button
-        my_button = qtw.QPushButton("Press me", clicked = lambda: press_it())
-        self.layout().addWidget(my_button)
+        my_button2 = qtw.QPushButton("Press me", clicked = lambda: press_it2())
+        self.layout().addWidget(my_button2)
 
 
 
@@ -41,6 +45,11 @@ class MainWindow(qtw.QWidget):
         self.show()
 
         def press_it():
+            #Add name to label
+            get_excel()
+            #my_label.setText(f"Hello{my_combo.currentText()}")
+
+        def press_it2():
             #Add name to label
             my_label.setText(f"Hello{my_combo.currentText()}")
 
