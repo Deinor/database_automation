@@ -1,3 +1,4 @@
+from operator import index
 import PyQt5.QtWidgets as qtw
 import PyQt5.QtGui as qtg
 import openpyxl
@@ -7,7 +8,7 @@ from excel_script import get_data
 wb = openpyxl.load_workbook('final-confirmed_2022_6_23.xlsx')
 wb.sheetnames           # The workbook's sheets' names.
 sheet = wb ["CAD"]      #Get a sheet from workbook  
-print(sheet)            #Debug_1
+#print(sheet)            #Debug_1
     
 # Get list of projects
 s_nr_col = sheet ["C"]
@@ -15,11 +16,10 @@ list_snr = []
 for x in range(4, len(s_nr_col)):       #S-number list
     list_snr += [s_nr_col[x].value]
 
-print(list_snr)                         #Debug_1_1
-    
-#print(get_data(sheet))
-#print()
+#print(list_snr)                         #Debug_1_1
 
+
+    
 class MainWindow(qtw.QWidget):
     def __init__(self):
         super().__init__()
@@ -47,17 +47,38 @@ class MainWindow(qtw.QWidget):
         #Put combo on screen
         self.layout().addWidget(my_combo)
 
+        #Conect signals to the metods - get index of list
+        def activated(index):
+            #print("Activated index:", index)       #Debug 2_1
+
+            global list_snrIndex
+
+            list_snrIndex = index
+            
+
+        my_combo.activated.connect(activated)
+
         #Create a button
         button_generateOut = qtw.QPushButton("Generate e-mail", clicked = lambda: generateOut())
         self.layout().addWidget(button_generateOut)
 
-        #Show the all
-        self.show()
-
         #Generate out. data
         def generateOut():
-            dic = get_data(sheet)
+
+            cell_address = "C" + str(list_snrIndex + 5)
+            #print(cell_address) #Debug 2_2
+
+            #Get selected row number
+
+            xy = coordinate_from_string (cell_address)
+            row = xy [1]
+            #print(row)          #Debug 2_3
+        
+            dic = get_data(row, sheet)
             print(dic)
+            
+        #Show the all
+        self.show()
 
 app = qtw.QApplication([])
 mw = MainWindow()

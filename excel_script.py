@@ -7,12 +7,7 @@ from openpyxl.utils.cell import coordinate_from_string, column_index_from_string
 def import_os():
     print(os.listdir("."))
 
-def get_data (sheet):  #Get row number
-    xy = coordinate_from_string ("C5")
-    row = xy [1]
-    #print(row)          #Debug_1_2
-
-    #Will change to Dictionarie
+def get_data (row, sheet):  #Get row number
     used_data = {}
     
     used_data["project_number"] = sheet ["A"+str(row)].value  #Get project name
