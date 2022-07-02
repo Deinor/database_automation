@@ -2,13 +2,20 @@ import os
 import openpyxl
 from openpyxl.utils.cell import coordinate_from_string, column_index_from_string    #Import for geting row number
 
-
+#Creating dictionary with keys and empty values. Used values needs to be epty to create first instance of table. Will be replaced by data from project after generate_data) 
+used_data = {"project_number": "",
+            "s_nr": " ",
+            "pjm_de": " ",
+            "pjm_de": " ",
+            "ordered": " ",
+            "used_hours": " ",
+            "available": " "}
 
 def import_os():
     print(os.listdir("."))
 
 def get_data (row, sheet):  #Get row number
-    used_data = {}
+    
     
     used_data["project_number"] = sheet ["A"+str(row)].value  #Get project name
     used_data["s_nr"] = sheet ["C" + str(row)].value #Get S-Number
@@ -19,7 +26,7 @@ def get_data (row, sheet):  #Get row number
     return used_data
     #print("Excel script", used_data)    #Debug_1_3
 
-import_os()
+#import_os()
 #test = get_listssnr()
 #print(get_listssnr())
 #test3 = get_row()
