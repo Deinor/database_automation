@@ -1,2 +1,2 @@
 # database_automation
-Automation of exports in Database
+Automation of hours approval. 
